@@ -1,34 +1,64 @@
-// Математическая игра
-function startMathGame() {
-    const num1 = Math.floor(Math.random() * 10) + 1;
-    const num2 = Math.floor(Math.random() * 10) + 1;
-    const operation = Math.random() < 0.5 ? '+' : '-';
-    let answer;
+document.getElementById('createTopicButton').addEventListener('click', () => {
+    const title = document.getElementById('topicTitle').value;
+    const content = document.getElementById('topicContent').value;
 
-    if (operation === '+') {
-        answer = num1 + num2;
-    } else {
-        answer = num1 - num2;
+    if (title.trim() === '' || content.trim() === '') {
+        alert('Пожалуйста, заполните все поля.');
+        return;
     }
 
-    const userAnswer = prompt(`Сколько будет ${num1} ${operation} ${num2}?`);
-    if (parseInt(userAnswer) === answer) {
-        document.getElementById('mathResult').innerText = 'Правильно! Молодец!';
-    } else {
-        document.getElementById('mathResult').innerText = `Неправильно. Правильный ответ: ${answer}.`;
-    }
+    const topic = {
+        title: title,
+        content: content,
+        comments: []
+    };
+
+    addTopicToList(topic);
+    document.getElementById('topicTitle').value = '';
+    document.getElementById('topicContent').value = '';
+});
+
+function addTopicToList(topic) {
+    const topicList = document.getElementById('topicList');
+    const topicDiv = document.createElement('div');
+    topicDiv.className = 'topic';
+
+    const topicTitle = document.createElement('h3');
+    topicTitle.textContent = topic.title;
+    topicDiv.appendChild(topicTitle);
+
+    const topicContent = document.createElement('p');
+    topicContent.textContent = topic.content;
+    topicDiv.appendChild(topicContent);
+
+    const commentInput = document.createElement('input');
+    commentInput.placeholder = 'Ваш комментарий';
+    topicDiv.appendChild(commentInput);
+
+    const commentButton = document.createElement('button');
+    commentButton.textContent = 'Добавить комментарий';
+    commentButton.addEventListener('click', () => {
+        const commentText = commentInput.value;
+        if (commentText.trim() === '') {
+            alert('Пожалуйста, введите комментарий.');
+            return;
+        }
+        addCommentToTopic(topicDiv, commentText);
+        commentInput.value = '';
+    });
+    topicDiv.appendChild(commentButton);
+
+    const commentsDiv = document.createElement('div');
+    commentsDiv.className = 'comments';
+    topicDiv.appendChild(commentsDiv);
+
+    topicList.appendChild(topicDiv);
 }
 
-// Логическая игра
-function startLogicGame() {
-    const questions = [
-        {
-            question: "Какой из следующих предметов не является фруктом?\n1. Яблоко\n2. Банан\n3. Морковь",
-            answer: '3'
-        },
-        {
-            question: "Что лишнее в этом ряду?\n1. Кошка\n2. Собака\n3. Стол\n4. Попугай",
-            answer: '3'
-        },
-        {
-            question: "Какой из этих предметов не может летать?\n1. Птица\n2
+function addCommentToTopic(topicDiv, commentText) {
+    const commentsDiv = topicDiv.querySelector('.comments');
+    const commentDiv = document.createElement('div');
+    commentDiv.className = 'comment';
+    commentDiv.textContent = commentText;
+    commentsDiv.appendChild(commentDiv);
+}
