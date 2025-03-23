@@ -3,43 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Обучающая платформа для детей</title>
+    <title>Форум</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Обучающая платформа для детей</h1>
-        <nav>
-            <ul>
-                <li><a href="#mathGame">Математика</a></li>
-                <li><a href="#logicGame">Логика</a></li>
-                <li><a href="#languageGame">Языки</a></li>
-            </ul>
-        </nav>
+        <h1>Форум</h1>
     </header>
 
     <main>
-        <section id="mathGame">
-            <h2>Игра: Математика</h2>
-            <button onclick="startMathGame()">Начать игру</button>
-            <div id="mathResult"></div>
+        <section id="newTopic">
+            <h2>Создать новую тему</h2>
+            <input type="text" id="topicTitle" placeholder="Заголовок темы">
+            <textarea id="topicContent" placeholder="Содержимое темы"></textarea>
+            <button id="createTopicButton">Создать тему</button>
         </section>
 
-        <section id="logicGame">
-            <h2>Игра: Логика</h2>
-            <button onclick="startLogicGame()">Начать игру</button>
-            <div id="logicResult"></div>
-        </section>
-
-        <section id="languageGame">
-            <h2>Игра: Языки</h2>
-            <button onclick="startLanguageGame()">Начать игру</button>
-            <div id="languageResult"></div>
+        <section id="topics">
+            <h2>Темы</h2>
+            <div id="topicList"></div>
         </section>
     </main>
 
     <footer>
-        <p>© 2023 Обучающая платформа для детей. Все права защищены.</p>
+        <p>© 2023 Форум. Все права защищены.</p>
     </footer>
 
     <script src="script.js"></script>
