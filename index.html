@@ -3,21 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Хроники Переплетений</title>
+    <title>Обучающая платформа для детей</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="game">
-        <h1>Хроники Переплетений</h1>
-        <div id="timelines">
-            <!-- Временные линии будут здесь -->
-        </div>
-        <div id="controls">
-            <button id="rewind">Перемотать время</button>
-            <button id="stitch">Создать переплетение</button>
-        </div>
-        <div id="story"></div>
-    </div>
+    <header>
+        <h1>Обучающая платформа для детей</h1>
+        <nav>
+            <ul>
+                <li><a href="#mathGame">Математика</a></li>
+                <li><a href="#logicGame">Логика</a></li>
+                <li><a href="#languageGame">Языки</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="mathGame">
+            <h2>Игра: Математика</h2>
+            <button onclick="startMathGame()">Начать игру</button>
+            <div id="mathResult"></div>
+        </section>
+
+        <section id="logicGame">
+            <h2>Игра: Логика</h2>
+            <button onclick="startLogicGame()">Начать игру</button>
+            <div id="logicResult"></div>
+        </section>
+
+        <section id="languageGame">
+            <h2>Игра: Языки</h2>
+            <button onclick="startLanguageGame()">Начать игру</button>
+            <div id="languageResult"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2023 Обучающая платформа для детей. Все права защищены.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
